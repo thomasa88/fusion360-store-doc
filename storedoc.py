@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 
+import shutil
+import os
 import re
 import subprocess
+
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 TMP_FILE = 'tmp.md'
 README = 'README.md'
@@ -81,6 +85,10 @@ The add-in is licensed under the MIT license.
 <u>Disclaimer</u>
 
 The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and non-infringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+
+**Support Information**
+
+Feel free to send an e-mail if there are problems with the add-in, or even better, report them <span style="background: red;">FIX URL:</span> [here](https://github.com/thomasa88/PROJECT/issues). Please describe exactly what to do to trigger the problem. Also, include any error messages.
 """
 )
         
@@ -91,3 +99,4 @@ subprocess.check_call(['pandoc',
                        '-fmarkdown-implicit_figures',
                        '-o', OUT_FILE,
                        TMP_FILE])
+shutil.copy(f'{SCRIPT_DIR}/store.css', 'store.css')
